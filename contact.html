@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<style>
+  /* Tarjeta central */
+  .contact-card-wrap{
+    max-width: 760px;
+    margin: 55px auto;
+    padding: 0 15px; /* respiración en mobile */
+  }
+
+  .contact-card{
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(0,0,0,0.10);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    padding: 30px 30px 26px 30px;
+  }
+
+  /* Título (reutiliza tu estilo pentagon sin romperlo) */
+  .contact-card .pentagon{
+    display: inline-block;
+    width: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0 auto 18px auto;
+  }
+
+  .contact-img{
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    display: block;
+    margin: 10px auto 22px auto;
+  }
+
+  /* Info */
+  .contact-info{
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .contact-label{
+    font-weight: 700;
+    margin: 18px 0 6px 0;
+  }
+
+  .contact-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-row .material-icons{
+    font-size: 20px;
+    color: #002e5d;
+  }
+
+  .contact-link{
+    color: #002e5d;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .contact-link:hover{
+    text-decoration: underline;
+  }
+
+  /* CTA opcional (por si quieres un botón bonito aquí también) */
+  .contact-cta{
+    text-align: center;
+    margin-top: 26px;
+  }
+
+  .contact-btn{
+    display: inline-block;
+    padding: 12px 26px;
+    background-color: #002e5d;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 2px solid #002e5d;
+    transition: all 0.3s ease;
+  }
+
+  .contact-btn:hover{
+    background-color: transparent;
+    color: #002e5d;
+    text-decoration: none;
+  }
+
+</style>
+
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" href="css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <title>Andrew Newman - Mindhacking</title>
+  </head>
+
+  <body id="cuerpo">
+
+    <!-- Header -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="page-header">
+          <a href="index.html">
+            <img src="src/img/head.jpg" width="833" height="330" class="img-fluid mx-auto" alt="Andrew Newman - Mindhacking">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú (igual al nuevo) -->
+    <div class="container-fluid nav-wrap">
+      <nav class="nav nav-pills flex-column flex-sm-row nav-mh">
+
+        <a class="text-sm-center nav-link nav-mh-link"
+          href="andrewnewman.html">
+          Quién es Andrew Newman
+        </a>
+
+        <a class="text-sm-center nav-link nav-mh-link"
+          href="mindhacking.html">
+          Qué es Mindhacking
+        </a>
+
+        <a class="text-sm-center nav-link nav-mh-link"
+          href="services.html">
+          Servicios y eventos
+        </a>
+
+        <a class="text-sm-center nav-link nav-mh-link is active"
+            href="contact.html">
+          Contacto
+        </a>
+
+      </nav>
+    </div>
+
+    <!-- SEPARADOR -->
+    <div class="line-separator"></div>
+<div class="contact-card text-center">
+    <!-- CONTENIDO CONTACTO (Tarjeta central) -->
+    <div class="contact-card-wrap">
+      <div class="contact-card text-center">
+
+        <div class="pentagon">
+          Cotiza o Reserva tu Evento Ahora
+        </div>
+
+        <img src="https://static.wixstatic.com/media/dfb8c1_dacc789b63a54080bcbe17a0d95f1a59~mv2.jpg"
+            alt="Mindhacking"
+            class="contact-img">
+
+        <div class="contact-info">
+
+          <div class="contact-label">Celular / WhatsApp</div>
+          <div class="contact-row">
+            <i class="material-icons">perm_phone_msg</i>
+            <a class="contact-link" href="https://wa.me/573192477908?text=Hola%20Andrew.%20Estoy%20listo%20para%20experimentar%20MindHacking.%20Quiero%20informaci%C3%B3n%20para%20reservar." target="_blank">
+              319 247 7908
+            </a>
+          </div>
+          
+
+          <div class="contact-label">Email</div>
+          <div class="contact-row">
+            <i class="material-icons">email</i>
+            <a class="contact-link" href="mailto:andrewnewman222@gmail.com">
+              andrewnewman222@gmail.com
+            </a>
+          </div>
+
+          <!-- CTA opcional -->
+          <div class="contact-cta">
+            <a class="contact-btn" href="https://wa.me/573192477908?text=Hola%20Andrew.%20Estoy%20listo%20para%20experimentar%20MindHacking.%20Quiero%20informaci%C3%B3n%20para%20reservar." target="_blank">
+              Escribir por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="line-separator"></div>
+
+
+    <!-- FOOTER -->
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <p class="footer-text">
+          © Andrew Newman <br>
+          Todos los derechos reservados <br>
+          Bogotá, Colombia <br>
+          <span id="year"></span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+  </body>
+</html>

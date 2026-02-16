@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" href="css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+
+    <title>Andrew Newman - Mindhacking</title>
+
+    <style>
+      #countdown{
+        display: block;          /* vuelve a ir debajo */
+        margin-top: 6px;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      #countdown.fade-out{
+        opacity: 0;
+        transform: translateY(4px);
+      }
+    </style>
+
+  </head>
+
+  <body id="cuerpo">
+
+    <!-- HEADER -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="page-header">
+          <a href="index.html">
+            <img src="src/img/head.jpg" class="img-fluid mx-auto" alt="Andrew Newman - Mindhacking">
+          </a>
+        </div>
+      </div>
+
+        <a href="javascript:void(0)" class="scroll-hint" id="scrollHint">
+          ATRÉVETE A DESAFIAR TU REALIDAD
+          <span id="countdown">(10)</span>
+          <span>↓</span>
+        </a>
+    </div>
+
+    <!-- MENÚ -->
+    <div id="main-menu" class="container-fluid nav-wrap">
+      <nav class="nav nav-pills flex-column flex-sm-row nav-mh">
+
+        <a class="text-sm-center nav-link nav-mh-link"
+          href="andrewnewman.html">
+          Quién es Andrew Newman
+        </a>
+
+        <a class="text-sm-center nav-link nav-mh-link"
+          href="mindhacking.html">
+          Qué es Mindhacking
+        </a>
+
+        <a class="text-sm-center nav-link nav-mh-link"
+          href="services.html">
+          Servicios y eventos
+        </a>
+
+        <a class="text-sm-center nav-link nav-mh-link"
+            href="contact.html">
+          Contacto
+        </a>
+
+      </nav>
+    </div>
+
+    <!-- SEPARADOR -->
+    <div class="line-separator"></div>
+
+    <br><br>
+
+    <!-- FOOTER -->
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <p class="footer-text">
+          © Andrew Newman <br>
+          Todos los derechos reservados <br>
+          Bogotá, Colombia <br>
+          <span id="year"></span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const secondsStart = 10;
+
+      const hint = document.getElementById("scrollHint");
+      const cd = document.getElementById("countdown");
+      if (!hint || !cd) return;
+
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function scrollALaMitad() {
+        // Baja SOLO un “poquito”: ajusta entre 180 y 320.
+        const y = 180;
+        window.scrollTo({ top: y, behavior: prefersReducedMotion ? "auto" : "smooth" });
+      }
+
+      let seconds = secondsStart;
+      cd.textContent = `(${seconds})`;
+
+      let cancelled = false;
+      hint.addEventListener("click", function (e) {
+        e.preventDefault();
+        cancelled = true;
+        scrollALaMitad();
+        cd.textContent = "";
+      });
+
+      const tick = setInterval(function () {
+        if (cancelled) { clearInterval(tick); return; }
+
+        seconds -= 1;
+        cd.textContent = `(${seconds})`;
+
+        if (seconds <= 0) {
+          clearInterval(tick);
+          scrollALaMitad();
+          cd.textContent = "";
+        }
+      }, 1000);
+    });
+    </script>
+
+
+  </body>
+</html>

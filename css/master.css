@@ -32,9 +32,8 @@ body{
   }
 }
 
-/* En index (móvil): quita el footer para mantener el aura */
 @media (max-width: 768px){
-  body#index .footer-bottom{
+  body.page-index .footer-bottom{
     display: none !important;
   }
 }

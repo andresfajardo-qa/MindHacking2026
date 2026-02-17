@@ -32,6 +32,13 @@ body{
   }
 }
 
+/* En index (móvil): quita el footer para mantener el aura */
+@media (max-width: 768px){
+  body#index .footer-bottom{
+    display: none !important;
+  }
+}
+
 /* ⚠️ NO romper Bootstrap */
 .row{
   margin-left: -15px;

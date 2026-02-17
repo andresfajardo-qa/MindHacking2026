@@ -57,6 +57,61 @@ body{
 }
 
 /* ===============================
+   INDEX 
+================================ */
+
+.index-art{
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.index-art a{
+  display: block;
+  max-width: 850px;   /* tamaño base */
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.index-art img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  transition: transform .35s ease;
+}
+
+/* Hover */
+.index-art a:hover img{
+  transform: scale(1.03);
+  filter: brightness(1.1) contrast(1.05) saturate(1.2);
+}
+
+.index-art a:hover{
+  transform: scale(1.03);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+
+.page-header{
+  position: relative;
+}
+
+.scroll-hint{
+  position: absolute;
+  bottom: 75px !important;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+@media (max-width: 768px){
+  .scroll-hint{ bottom: 90px; }
+}
+
+/* ===============================
    MENÚ (estilo barra azul elegante)
 ================================ */
 .nav-wrap{

@@ -11,7 +11,7 @@
 
     <style>
       #countdown{
-        display: block;          /* vuelve a ir debajo */
+       display: inline-block;
         margin-top: 6px;
         transition: opacity 0.6s ease, transform 0.6s ease;
       }
@@ -39,7 +39,6 @@
         <a href="javascript:void(0)" class="scroll-hint" id="scrollHint">
           ATRÉVETE A DESAFIAR TU REALIDAD
           <span id="countdown">(10)</span>
-          <span>↓</span>
         </a>
     </div>
 
@@ -73,6 +72,15 @@
     <!-- SEPARADOR -->
     <div class="line-separator"></div>
 
+    <!-- IMAGEN INDEX -->
+    <div class="index-art">
+      <a href="andrewnewman.html">
+        <img src="src/img/laberinto.png" 
+            alt="Explora tu mente - Mindhacking"
+            class="img-fluid">
+      </a>
+    </div>
+
     <br><br>
 
     <!-- FOOTER -->
@@ -88,47 +96,79 @@
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const secondsStart = 10;
-
-      const hint = document.getElementById("scrollHint");
-      const cd = document.getElementById("countdown");
-      if (!hint || !cd) return;
-
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      function scrollALaMitad() {
-        // Baja SOLO un “poquito”: ajusta entre 180 y 320.
-        const y = 180;
-        window.scrollTo({ top: y, behavior: prefersReducedMotion ? "auto" : "smooth" });
-      }
-
-      let seconds = secondsStart;
-      cd.textContent = `(${seconds})`;
-
-      let cancelled = false;
-      hint.addEventListener("click", function (e) {
-        e.preventDefault();
-        cancelled = true;
-        scrollALaMitad();
-        cd.textContent = "";
-      });
-
-      const tick = setInterval(function () {
-        if (cancelled) { clearInterval(tick); return; }
-
-        seconds -= 1;
-        cd.textContent = `(${seconds})`;
-
-        if (seconds <= 0) {
-          clearInterval(tick);
-          scrollALaMitad();
-          cd.textContent = "";
-        }
-      }, 1000);
-    });
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 
+   <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const secondsStart = 10;
 
+        const hint = document.getElementById("scrollHint");
+        const cd = document.getElementById("countdown");
+        const menu = document.getElementById("main-menu");
+        const art  = document.getElementById("index-art");
+
+        if (!hint || !cd || !menu) return;
+
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function scrollToMenuAndShowArt() {
+          // Ajuste fino: separa el menú del borde superior
+          const OFFSET = 10; // prueba 0–20
+
+          // Posición real del menú en la página
+          const yMenu = menu.getBoundingClientRect().top + window.pageYOffset - OFFSET;
+
+          window.scrollTo({
+            top: yMenu,
+            behavior: prefersReducedMotion ? "auto" : "smooth"
+          });
+
+          // Opcional: si la imagen existe y queda fuera del viewport, baja un pelín más.
+          // Esto evita que el menú quede arriba pero la imagen no se vea.
+          if (art) {
+            setTimeout(() => {
+              const artRect = art.getBoundingClientRect();
+              const visibleEnough = artRect.top < window.innerHeight && artRect.bottom > 0;
+
+              if (!visibleEnough) {
+                // Baja lo necesario para que la parte superior de la imagen entre en pantalla
+                const yArt = art.getBoundingClientRect().top + window.pageYOffset - (menu.offsetHeight + 8);
+                window.scrollTo({
+                  top: yArt,
+                  behavior: prefersReducedMotion ? "auto" : "smooth"
+                });
+              }
+            }, prefersReducedMotion ? 0 : 450);
+          }
+        }
+
+        let seconds = secondsStart;
+        cd.textContent = `(${seconds})`;
+
+        let cancelled = false;
+
+        hint.addEventListener("click", function (e) {
+          e.preventDefault();
+          cancelled = true;
+          scrollToMenuAndShowArt();
+          cd.textContent = "";
+        });
+
+        const tick = setInterval(function () {
+          if (cancelled) { clearInterval(tick); return; }
+
+          seconds -= 1;
+          cd.textContent = `(${seconds})`;
+
+          if (seconds <= 0) {
+            clearInterval(tick);
+            scrollToMenuAndShowArt();
+            cd.textContent = "";
+          }
+        }, 1000);
+      });
+      </script>
+     
   </body>
 </html>

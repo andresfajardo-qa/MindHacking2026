@@ -33,7 +33,7 @@ body{
 }
 
 @media (max-width: 768px){
-  body.page-index .footer-bottom{
+  body.page-index.footer-bottom{
     display: none !important;
   }
 }
@@ -99,7 +99,6 @@ body{
   transform: scale(1.03);
   box-shadow: 0 30px 60px rgba(0,0,0,0.6);
 }
-
 
 .page-header{
   position: relative;

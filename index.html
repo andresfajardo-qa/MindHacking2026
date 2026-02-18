@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="css/master.css">
     <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Andrew Newman - Mindhacking</title>
 
     <style>
@@ -76,10 +77,12 @@
     <div class="index-art">
       <a href="andrewnewman.html" aria-label="Ir a Quién es Andrew Newman">
         <picture>
-          <!-- MÓVIL -->
-          <source media="(max-width: 768px)" srcset="src/img/laberintosombra.png">
           <!-- DESKTOP -->
-          <img src="src/img/laberinto.png" alt="Laberinto mental MindHacking" loading="lazy">
+          <source media="(min-width: 769px)" srcset="src/img/laberinto.png">
+          <!-- MÓVIL (default / fallback) -->
+          <img src="src/img/laberintosombra.png"
+              alt="Laberinto mental MindHacking"
+              loading="lazy">
         </picture>
       </a>
     </div>

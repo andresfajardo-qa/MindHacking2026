@@ -1,5 +1,5 @@
 /* ===============================
-   BASE
+   1) BASE (GLOBAL)
 ================================ */
 *{
   font-family: 'Merriweather', serif;
@@ -9,22 +9,25 @@ body{
   margin: 5px;
 }
 
+/* Fondo general del sitio (Wix) */
 #cuerpo{
   font-size: 26px;
   line-height: 1.4em;
   text-align: justify;
+
   background: url(https://static.wixstatic.com/media/214ec6_3b86be8b75c276fe06abfb9c8f473244.png)
               no-repeat center center fixed;
   background-size: cover;
 }
 
-.container-fluid {
+.container-fluid{
   padding-left: 0;
   padding-right: 0;
 }
 
+
 /* ===============================
-   CONTAINERS / BOOTSTRAP FIXES
+   2) BOOTSTRAP FIXES
 ================================ */
 @media (min-width: 1200px){
   .container{
@@ -32,16 +35,98 @@ body{
   }
 }
 
-@media (max-width: 768px){
-  body.page-index.footer-bottom{
-    display: none !important;
-  }
+
+/* ===============================
+   3) HEADER
+================================ */
+.page-header{
+  position: relative; /* para el scroll-hint absolute */
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
-/* ⚠️ NO romper Bootstrap */
-.row{
-  margin-left: -15px;
-  margin-right: -15px;
+/* Si tu <img> del header NO tiene class="header-img", agrega esa clase en el HTML */
+.header-img{
+  display: block;
+  width: 100%;
+  max-width: 833px;
+  height: auto;
+  margin: 0 auto;
+}
+
+
+/* ===============================
+   4) INDEX (DEFAULT / DESKTOP)
+================================ */
+
+/* ✅ Fondo negro solo para index (desktop + mobile) */
+body#cuerpo.page-index{
+  background: #000 !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+}
+
+/* Contenedor de la imagen */
+.index-art{
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  padding: 0 20px; /* para que no pegue a los bordes en pantallas pequeñas */
+}
+
+/* Link envolviendo picture/img */
+.index-art a{
+  display: block;
+  max-width: 850px;  /* desktop size */
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+/* Imagen */
+.index-art img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  transition: transform .35s ease, filter .35s ease;
+}
+
+/* Hover (desktop) */
+.index-art a:hover img{
+  transform: scale(1.03);
+  filter: brightness(1.07) contrast(1.04) saturate(1.12);
+}
+.index-art a:hover{
+  transform: scale(1.01);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+/* Texto “Atrévete…” */
+.scroll-hint{
+  position: absolute;
+  bottom: 75px !important; /* ya sabes que aquí tocó con !important */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+
+/* ===============================
+   5) INDEX (MOBILE OVERRIDES)
+================================ */
+@media (max-width: 768px){
+  /* baja un poquito la imagen si quieres */
+  body#cuerpo.page-index .index-art{
+    margin-top: 40px; /* ajusta 20–80 */
+  }
+
+  /* Ajuste del texto “Atrévete…” en móvil */
+  .scroll-hint{
+    bottom: 90px !important;
+  }
 }
 
 /* ===============================

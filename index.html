@@ -23,7 +23,7 @@
     </style>
 
   </head>
-
+  
   <body id="cuerpo" class="page-index">
 
     <!-- HEADER -->
@@ -75,9 +75,15 @@
     <!-- IMAGEN INDEX -->
     <div class="index-art">
       <a href="andrewnewman.html">
-        <img src="src/img/laberinto.png" 
-            alt="Explora tu mente - Mindhacking"
-            class="img-fluid">
+        <picture>
+          <!-- Imagen para móvil -->
+          <source media="(max-width: 768px)" srcset="src/img/laberintosombra.png">
+
+          <!-- Imagen por defecto (desktop) -->
+          <img src="src/img/laberinto.png"
+              alt="Laberinto mental Mindhacking"
+              class="laberinto-img">
+        </picture>
       </a>
     </div>
 

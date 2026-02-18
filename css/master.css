@@ -25,6 +25,15 @@ body{
   padding-right: 0;
 }
 
+/* ===============================
+   INDEX - FORZAR EL FONDO NEGRO
+================================ */
+#cuerpo.page-index{
+  background: #000 !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+}
+
 
 /* ===============================
    2) BOOTSTRAP FIXES

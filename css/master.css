@@ -127,16 +127,29 @@ body#cuerpo.page-index{
    5) INDEX (MOBILE OVERRIDES)
 ================================ */
 @media (max-width: 768px){
-  /* baja un poquito la imagen si quieres */
+
+  /* Imagen */
   body#cuerpo.page-index .index-art{
     margin-top: 40px; /* ajusta 20–80 */
   }
 
-  /* Ajuste del texto “Atrévete…” en móvil */
-  .scroll-hint{
+  /* Texto “Atrévete…” */
+  body#cuerpo.page-index .scroll-hint{
     bottom: 90px !important;
   }
+
+  /* Menú vertical en móvil */
+  body#cuerpo.page-index .nav-mh{
+    flex-direction: column;
+  }
+
+  body#cuerpo.page-index .nav-mh-link{
+    font-size: 18px !important;     
+    padding: 16px 12px !important;
+    line-height: 1.2 !important;
+  }
 }
+
 
 /* ===============================
    HEADER
@@ -254,12 +267,6 @@ body#cuerpo.page-index{
   .nav-mh-link:last-child{
     border-bottom: none;
   }
-}
-
-.nav-mh .nav-mh-link{
-  font-size: 22px !important;
-  font-weight: 700;
-  padding: 24px 10px;
 }
 
 /* ===============================

@@ -133,11 +133,43 @@ body#cuerpo.page-index{
     margin-top: 40px; /* ajusta 20–80 */
   }
 
-  /* Texto “Atrévete…” */
+ /* Texto “Atrévete…”: que NO se monte sobre el logo */
   body#cuerpo.page-index .scroll-hint{
-    bottom: 90px !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    /* Ajusta esto para “bajarlo” dentro del banner sin tapar el logo */
+    bottom: 16px !important;        /* prueba 10–28 */
+
+    width: calc(100% - 24px) !important;
+    max-width: 520px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-align: center !important;
+
+    /* más pequeño + una sola línea */
+    font-size: 14px !important;     /* prueba 13–15 */
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
+  /* Tamaño contador*/
+    body#cuerpo.page-index #countdown{
+    font-size: 16px !important;   /* igual al texto */
+    font-weight: 600;             /* opcional: menos pesado */
+  }
+
+  /* Que el contador quede inline y no salte a otra línea */
+  body#cuerpo.page-index .scroll-hint span{
+    display: inline !important;
+    margin-left: 8px;
+  }
+
+  
   /* Menú vertical en móvil */
   body#cuerpo.page-index .nav-mh{
     flex-direction: column;

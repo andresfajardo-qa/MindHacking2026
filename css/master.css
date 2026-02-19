@@ -175,10 +175,15 @@ body#cuerpo.page-index{
     flex-direction: column;
   }
 
-  body#cuerpo.page-index .nav-mh-link{
-    font-size: 18px !important;     
-    padding: 16px 12px !important;
-    line-height: 1.2 !important;
+   body#cuerpo.page-index .nav-mh-link{
+    font-size: 17px !important;      /* antes 18–22 */
+    padding: 14px 10px !important;   /* antes 16–24 */
+    letter-spacing: 0.5px;           /* da elegancia */
+    transition: background .25s ease, transform .2s ease;
+  }
+
+  body#cuerpo.page-index .nav-mh-link:active{
+  transform: scale(0.98);
   }
 }
 

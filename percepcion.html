@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+    <title>Andrew Newman - Experimento de Percepción</title>
+
+    <style>
+      .percepcion-wrap{
+        max-width: 1000px;
+        margin: 40px auto 60px auto;
+        padding: 0 20px;
+      }
+
+      .percepcion-intro,
+      .percepcion-step,
+      .percepcion-final{
+        background: rgba(255,255,255,0.92);
+        border-radius: 18px;
+        padding: 28px 24px;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+      }
+
+      .percepcion-step,
+      .percepcion-final{
+        display: none;
+      }
+
+      .percepcion-step.is-active,
+      .percepcion-final.is-active{
+        display: block;
+      }
+
+      .percepcion-kicker{
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #1d2f48;
+        margin-bottom: 18px;
+      }
+
+      .percepcion-note{
+        background: rgba(0,52,89,0.08);
+        border-left: 5px solid #003459;
+        padding: 14px 16px;
+        margin: 20px 0 8px 0;
+        border-radius: 10px;
+        font-size: 0.96rem;
+      }
+
+      .percepcion-progress{
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 14px 0 24px 0;
+      }
+
+      .percepcion-pill{
+        background: #0b1c2d;
+        color: ghostwhite;
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.88rem;
+        letter-spacing: 0.3px;
+      }
+
+      .percepcion-step-title{
+        text-align: left;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #0d2c4a;
+      }
+
+      .percepcion-step-subtitle{
+        font-size: 1.05rem;
+        margin-bottom: 18px;
+        color: #23374f;
+      }
+
+      .percepcion-image-wrap{
+        text-align: center;
+        margin: 20px 0 18px 0;
+      }
+
+      .percepcion-image{
+        max-width: 100%;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+      }
+
+      .troxler-img{
+        max-width: 320px;
+        width: 100%;
+      }
+
+      .percepcion-actions{
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+
+      .percepcion-btn{
+        background: #003459;
+        color: ghostwhite;
+        border: none;
+        border-radius: 999px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      }
+
+      .percepcion-btn:hover{
+        background: #0d4f7c;
+        box-shadow: 0 8px 18px rgba(0,52,89,0.24);
+        transform: translateY(-1px);
+      }
+
+      .percepcion-btn.secondary{
+        background: #1f2f4a;
+      }
+
+      .percepcion-hidden{
+        display: none;
+      }
+
+      .percepcion-reveal{
+        margin-top: 18px;
+        padding: 18px;
+        background: rgba(15, 49, 76, 0.06);
+        border-radius: 14px;
+      }
+
+      .percepcion-reveal strong{
+        color: #0d2c4a;
+      }
+
+      .percepcion-reveal-image{
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin-top: 14px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      }
+
+      .percepcion-quote{
+        text-align: center;
+        font-size: 1.18rem;
+        line-height: 1.8;
+        color: #1d2f48;
+        margin: 10px auto;
+        max-width: 820px;
+      }
+
+      .percepcion-quote strong{
+        color: #0d2c4a;
+      }
+
+      @media (max-width: 768px){
+        .percepcion-wrap{
+          padding: 0 14px;
+          margin-top: 24px;
+        }
+
+        .percepcion-intro,
+        .percepcion-step,
+        .percepcion-final{
+          padding: 22px 18px;
+        }
+
+        .percepcion-step-title{
+          font-size: 1.7rem;
+        }
+
+        .percepcion-quote{
+          font-size: 1.05rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="cuerpo">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="page-header">
+          <a href="index.html">
+            <img src="src/img/head.jpg" width="833" height="330" class="img-fluid mx-auto" alt="Andrew Newman - Mindhacking">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid nav-wrap">
+      <nav class="nav nav-pills flex-column flex-sm-row nav-mh">
+        <a class="text-sm-center nav-link nav-mh-link" href="andrewnewman.html">Quién es Andrew Newman</a>
+        <a class="text-sm-center nav-link nav-mh-link" href="mindhacking.html">Qué es Mindhacking</a>
+        <a class="text-sm-center nav-link nav-mh-link" href="services.html">Servicios y eventos</a>
+        <a class="text-sm-center nav-link nav-mh-link" href="contact.html">Contacto</a>
+      </nav>
+    </div>
+
+    <div class="line-separator"></div>
+
+    <main class="percepcion-wrap">
+      <section class="percepcion-intro" id="introBlock">
+        <div class="pentagon">Experimento de percepción</div>
+        <p class="percepcion-kicker">
+          Bienvenido. En esta página encontrarás tres pruebas breves. No avances por tu cuenta.
+          Espera la indicación de Andrew Newman y resuelve cada experimento en orden.
+        </p>
+
+        <div class="percepcion-progress">
+          <span class="percepcion-pill">Prueba 1 · La mente borra</span>
+          <span class="percepcion-pill">Prueba 2 · La mente corrige</span>
+          <span class="percepcion-pill">Prueba 3 · La mente interpreta</span>
+        </div>
+
+        <div class="percepcion-note">
+          <strong>Importante:</strong> mantén el brillo del celular en un nivel cómodo, no uses modo oscuro extremo para estas imágenes y no avances hasta escuchar la señal.
+        </div>
+
+        <div class="percepcion-actions">
+          <button class="percepcion-btn" type="button" data-go="step1">Comenzar</button>
+        </div>
+      </section>
+
+      <section class="percepcion-step" id="step1">
+        <div class="pentagon">Prueba 1</div>
+        <h2 class="percepcion-step-title">Fíjate en el punto</h2>
+        <p class="percepcion-step-subtitle">
+          Mira fijamente el punto rojo del centro durante 20 a 30 segundos. No persigas el aro azul. Solo mantén tu atención quieta.
+        </p>
+
+        <div class="percepcion-image-wrap">
+          <img class="percepcion-image troxler-img" src="src/img/percepcion-troxler.png" alt="Efecto Troxler">
+        </div>
+
+        <p>
+          Si lo haces bien, notarás que el contorno azul empieza a perder fuerza, desvanecerse o casi desaparecer por momentos.
+        </p>
+
+        <div class="percepcion-actions">
+          <button class="percepcion-btn secondary" type="button" data-go="intro">Volver</button>
+          <button class="percepcion-btn" type="button" data-go="step2">Siguiente prueba</button>
+        </div>
+      </section>
+
+      <section class="percepcion-step" id="step2">
+        <div class="pentagon">Prueba 2</div>
+        <h2 class="percepcion-step-title">Las fresas grises</h2>
+        <p class="percepcion-step-subtitle">
+          Observa la imagen. Sin pensarlo demasiado: ¿de qué color dirías que son las fresas?
+        </p>
+
+        <div class="percepcion-image-wrap">
+          <img class="percepcion-image" src="src/img/percepcion-fresas.jpg" alt="Ilusión de las fresas grises">
+        </div>
+
+        <p>
+          Mira con atención. Si quieres, tapa con tus dedos el contexto alrededor de una pequeña zona de la fresa. Luego vuelve a quitar los dedos.
+        </p>
+
+        <div class="percepcion-actions">
+          <button class="percepcion-btn secondary" type="button" data-go="step1">Anterior</button>
+          <button class="percepcion-btn" type="button" id="revealStrawberriesBtn">Revelar</button>
+        </div>
+
+        <div class="percepcion-reveal percepcion-hidden" id="strawberriesReveal">
+          <p>
+            <strong>No hay un solo píxel rojo.</strong> Tu mente compensa la iluminación y reconstruye el color para que la escena tenga sentido.
+          </p>
+          <img class="percepcion-reveal-image" src="src/img/percepcion-fresas-reveal.jpg" alt="Revelación de las fresas grises">
+
+          <div class="percepcion-actions">
+            <button class="percepcion-btn" type="button" data-go="step3">Ir a la prueba 3</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="percepcion-step" id="step3">
+        <div class="pentagon">Prueba 3</div>
+        <h2 class="percepcion-step-title">¿Cuál línea es más larga?</h2>
+        <p class="percepcion-step-subtitle">
+          Mira las dos líneas amarillas. La mayoría siente que la línea superior es más larga. ¿Tú también?
+        </p>
+
+        <div class="percepcion-image-wrap">
+          <img class="percepcion-image" src="src/img/percepcion-ponzo.jpg" alt="Ilusión de Ponzo">
+        </div>
+
+        <p>
+          El contexto de profundidad engaña a tu sistema visual: no solo ve líneas, también interpreta distancia y perspectiva.
+        </p>
+
+        <div class="percepcion-actions">
+          <button class="percepcion-btn secondary" type="button" data-go="step2">Anterior</button>
+          <button class="percepcion-btn" type="button" data-go="final">Finalizar</button>
+        </div>
+      </section>
+
+      <section class="percepcion-final" id="finalBlock">
+        <div class="pentagon">Cierre</div>
+        <p class="percepcion-quote">
+          <strong>Ya demostramos algo importante:</strong><br>
+          no puedes confiar ciegamente en tus ojos.<br><br>
+          A veces la mente borra información.<br>
+          A veces la corrige.<br>
+          Y a veces la interpreta de una manera tan convincente…<br>
+          que terminas llamando “realidad” a una reconstrucción.
+        </p>
+
+        <div class="percepcion-actions">
+          <button class="percepcion-btn secondary" type="button" data-go="step3">Volver a la prueba 3</button>
+          <button class="percepcion-btn" type="button" data-go="intro">Reiniciar</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="line-separator"></div>
+
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <p class="footer-text">
+          © Andrew Newman <br>
+          Todos los derechos reservados <br>
+          Bogotá, Colombia <br>
+          <span id="year"></span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const introBlock = document.getElementById('introBlock');
+      const step1 = document.getElementById('step1');
+      const step2 = document.getElementById('step2');
+      const step3 = document.getElementById('step3');
+      const finalBlock = document.getElementById('finalBlock');
+      const strawberriesReveal = document.getElementById('strawberriesReveal');
+      const revealStrawberriesBtn = document.getElementById('revealStrawberriesBtn');
+
+      const blocks = {
+        intro: introBlock,
+        step1: step1,
+        step2: step2,
+        step3: step3,
+        final: finalBlock
+      };
+
+      function hideAllBlocks() {
+        Object.values(blocks).forEach(block => block.classList.remove('is-active'));
+      }
+
+      function goToBlock(targetKey) {
+        hideAllBlocks();
+        blocks[targetKey].classList.add('is-active');
+
+        if (targetKey !== 'step2') {
+          strawberriesReveal.classList.add('percepcion-hidden');
+        }
+
+        // No hacemos scroll automático.
+        // Así, al tocar "Comenzar" o "Siguiente", la página no salta al header.
+      }
+
+      document.querySelectorAll('[data-go]').forEach(button => {
+        button.addEventListener('click', () => {
+          const target = button.getAttribute('data-go');
+          goToBlock(target);
+        });
+      });
+
+      revealStrawberriesBtn.addEventListener('click', () => {
+        strawberriesReveal.classList.remove('percepcion-hidden');
+        // Revela en el mismo lugar, sin saltos.
+      });
+
+      goToBlock('intro');
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+  </body>
+</html>

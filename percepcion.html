@@ -604,6 +604,47 @@
         }
       }
 
+
+      /* FIX FINAL: evitar que títulos negros y óvalos se salgan en móvil */
+      body.page-percepcion .pentagon,
+      body.page-percepcion .percepcion-pill{
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 575px){
+        body.page-percepcion .pentagon{
+          width: 100% !important;
+          max-width: 100% !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          box-sizing: border-box !important;
+          overflow-wrap: break-word;
+          word-break: normal;
+        }
+
+        body.page-percepcion .percepcion-progress{
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+          padding: 0 !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+
+        body.page-percepcion .percepcion-pill{
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+          overflow-wrap: break-word;
+          word-break: normal;
+        }
+      }
+
     </style>
   </head>
 
@@ -634,8 +675,8 @@
       <section class="percepcion-intro" id="introBlock">
         <div class="pentagon">Experimento de percepción</div>
         <p class="percepcion-kicker">
-          Bienvenido. En esta página encontrarás tres pruebas breves. No avances por tu cuenta.
-          Espera la indicación de Andrew Newman y resuelve cada experimento en orden.
+          Bienvenido. En esta página encontrarás tres pruebas breves. No avances por tu cuenta.<br>
+          Espera la indicación de Andrew y resuelve cada experimento en orden.
         </p>
 
         <div class="percepcion-progress">
@@ -715,7 +756,7 @@
         <div class="pentagon">Prueba 3: La mente interpreta</div>
         <h2 class="percepcion-step-title">¿Cuál línea es más larga? Contesta en 3-5 segundos.</h2>
         <p class="percepcion-step-subtitle">
-          Mira las dos líneas amarillas y contesta rápidamente cuál es la más larga. Si te demoras más de 5 segundos en contestar es prueba fallida y no cuenta como aprobada.
+          Mira las dos líneas amarillas y contesta rápidamente cuál es la más larga. Si te demoras más de 4 segundos en contestar es prueba fallida y no cuenta como aprobada.
         </p>
 
         <div class="percepcion-image-wrap">
